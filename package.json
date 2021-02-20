@@ -2,7 +2,6 @@
   "name": "my-first-app",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8085",
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
