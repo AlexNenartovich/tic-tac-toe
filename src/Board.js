@@ -1,6 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import Square from './Square';
+import * as React from 'react';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+// import Constants from 'expo-constants';
+import Square from "./Square";
+// You can import from local files
+// import AssetExample from './components/AssetExample';
+
+// or any pure javascript modules available in npm
+// import { Card } from 'react-native-paper';
 
 class Board extends React.Component {
     constructor(props) {
@@ -57,7 +63,7 @@ class Board extends React.Component {
     }
 
     handleClick = (index) => {
-        if(this.state.squares[index] == null && !this.state.gameWon) {
+        if(this.state.squares[index] === null && !this.state.gameWon) {
             let sq = this.state.squares;
             sq[index] = this.state.xTurn ? "X" : "O";
             this.setState({
@@ -78,45 +84,93 @@ class Board extends React.Component {
             numClicked: 0
         })
     }
-
     render() {
         return (
-            <div style={{marginLeft: 600, marginTop: 200}}>
+            <View style={styles.container}>
                 {this.state.xTurn ? (
-                    <h2 style={{marginLeft: 25}}>X Turn</h2>
-                ) : <h2 style={{marginLeft: 25}}>O Turn</h2>}
-                <div>
-                    <Square onClick={this.handleClick} index={0} number={this.state.squares[0]} />
-                    <Square onClick={this.handleClick} index={1} number={this.state.squares[1]} />
-                    <Square onClick={this.handleClick} index={2} number={this.state.squares[2]} />
-                </div>
-                <div>
-                    <Square onClick={this.handleClick} index={3} number={this.state.squares[3]} />
-                    <Square onClick={this.handleClick} index={4} number={this.state.squares[4]} />
-                    <Square onClick={this.handleClick} index={5} number={this.state.squares[5]} />
-                </div>
-                <div>
-                    <Square onClick={this.handleClick} index={6} number={this.state.squares[6]} />
-                    <Square onClick={this.handleClick} index={7} number={this.state.squares[7]} />
-                    <Square onClick={this.handleClick} index={8} number={this.state.squares[8]} />
-                </div>
+                    <Text style={{paddingBottom: 20, paddingTop: 80, paddingLeft: 75, fontSize: 96}}>X Turn</Text>
+                ) : <Text style={{paddingBottom: 20, paddingTop: 80, paddingLeft: 75, fontSize: 96}}>O Turn</Text>}
+                <View style={styles.row}>
+                    <Square onPress={this.handleClick} index={0} number={this.state.squares[0]} />
+                    <Square onPress={this.handleClick} index={1} number={this.state.squares[1]} />
+                    <Square onPress={this.handleClick} index={2} number={this.state.squares[2]} />
+                </View>
+                <View style={styles.row1}>
+                    <Square onPress={this.handleClick} index={3} number={this.state.squares[3]} />
+                    <Square onPress={this.handleClick} index={4} number={this.state.squares[4]} />
+                    <Square onPress={this.handleClick} index={5} number={this.state.squares[5]} />
+                </View>
+                <View style={styles.row2}>
+                    <Square onPress={this.handleClick} index={6} number={this.state.squares[6]} />
+                    <Square onPress={this.handleClick} index={7} number={this.state.squares[7]} />
+                    <Square onPress={this.handleClick} index={8} number={this.state.squares[8]} />
+                </View>
                 {this.state.gameWon ? (
-                    <div>
-                        <h2>{this.state.winner} Won!</h2>
-                        <button onClick={this.playAgain}>Play again</button>
-                    </div>
-                ) : <div></div>
+                    <View style={styles.win}>
+                        <Text style={styles.text}>{this.state.winner} Won!</Text>
+                        <TouchableOpacity style={styles.button} title="Play again" onPress={this.playAgain}>
+                            <Text style={styles.text}>Play again</Text>
+                        </TouchableOpacity>
+                    </View>
+                ) : <View></View>
                 }
-                {this.state.numClicked === 9 && !this.state.gameWon ? (
-                    <div>
-                        <h2>It's a Draw</h2>
-                        <button onClick={this.playAgain}>Play again</button>
-                    </div>
-                ) : <div></div>
+                {this.state.numClicked === 9 ? (
+                    <View style={styles.win}>
+                        <Text style={styles.text}>It is a Draw</Text>
+                        <TouchableOpacity style={styles.button} title="Play again" onPress={this.playAgain}>
+                            <Text style={styles.text}>Play again</Text>
+                        </TouchableOpacity>
+                    </View>
+                ) : <View></View>
                 }
-            </div>
-        )
+
+            </View>
+        );
     }
 }
 
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+ //       paddingTop: Constants.statusBarHeight,
+        backgroundColor: "azure",
+        padding: 8,
+    },
+    button: {
+        backgroundColor: "grey"
+    },
+    text: {
+        margin: 24,
+        fontSize: 36,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    row: {
+        flex: 1,
+        flexDirection: "row",
+        marginLeft: 77
+    },
+    row1: {
+        flex: 1,
+        flexDirection: "row",
+        position: "absolute",
+        top: 335,
+        left: 85
+    },
+    row2: {
+        flex: 1,
+        flexDirection: "row",
+        position: "absolute",
+        top: 415,
+        left: 85
+    },
+    win: {
+        position: "absolute",
+        top: 520,
+        left: 100
+    }
+});
+
 export default Board;
+
