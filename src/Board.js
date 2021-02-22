@@ -114,7 +114,7 @@ class Board extends React.Component {
                     </View>
                 ) : <View></View>
                 }
-                {this.state.numClicked === 9 ? (
+                {this.state.numClicked === 9 && !this.state.gameWon ? (
                     <View style={styles.win}>
                         <Text style={styles.text}>It is a Draw</Text>
                         <TouchableOpacity style={styles.button} title="Play again" onPress={this.playAgain}>
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     },
     win: {
         position: "absolute",
-        top: 510,
+        top: 500,
         left: 100
     }
 });
