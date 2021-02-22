@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
  //       paddingTop: Constants.statusBarHeight,
-        backgroundColor: "azure",
+    //    backgroundColor: "azure",
         padding: 8,
     },
     button: {
@@ -155,14 +155,16 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: "row",
         position: "absolute",
-        top: 335,
+        backgroundColor: "azure",
+        top: 300,
         left: 85
     },
     row2: {
         flex: 1,
         flexDirection: "row",
         position: "absolute",
-        top: 415,
+        backgroundColor: "azure",
+        top: 379,
         left: 85
     },
     win: {
