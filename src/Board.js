@@ -107,7 +107,7 @@ class Board extends React.Component {
                 </View>
                 {this.state.gameWon ? (
                     <View style={styles.win}>
-                        <Text style={styles.text}>{this.state.winner} Won!</Text>
+                        <Text style={styles.text}>{this.state.winner} Wins!</Text>
                         <TouchableOpacity style={styles.button} title="Play again" onPress={this.playAgain}>
                             <Text style={styles.text}>Play again</Text>
                         </TouchableOpacity>
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         position: "absolute",
         backgroundColor: "azure",
-        top: 302,
+        top: 303,
         left: 85
     },
     row2: {
@@ -164,12 +164,12 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         position: "absolute",
         backgroundColor: "azure",
-        top: 381,
+        top: 382,
         left: 85
     },
     win: {
         position: "absolute",
-        top: 520,
+        top: 510,
         left: 100
     }
 });
