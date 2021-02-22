@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         position: "absolute",
         backgroundColor: "azure",
-        top: 300,
+        top: 302,
         left: 85
     },
     row2: {
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         position: "absolute",
         backgroundColor: "azure",
-        top: 379,
+        top: 381,
         left: 85
     },
     win: {
