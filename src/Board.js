@@ -93,7 +93,7 @@ class Board extends React.Component {
             <View style={styles.container}>
                 {this.state.xTurn ? (
                     <Text style={{paddingBottom: 20, paddingTop: 80, paddingLeft: 75, fontSize: 96}}>X Turn</Text>
-                ) : <Text style={{paddingBottom: 20, paddingTop: 80, paddingLeft: 75, fontSize: 96}}>O Turn</Text>}
+                ) : <Text style={{paddingBottom: 20, paddingTop: 80, paddingLeft: 66, fontSize: 96}}>O Turn</Text>}
                 <View style={styles.row}>
                     <Square onPress={this.handleClick} index={0} color={this.state.color} number={this.state.squares[0]} />
                     <Square onPress={this.handleClick} index={1} color={this.state.color} number={this.state.squares[1]} />
