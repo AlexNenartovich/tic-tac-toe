@@ -7,7 +7,7 @@ class Square extends React.Component {
         return (
             <View>
                 <TouchableOpacity activeOpacity={1} style={styles.button} onPress={() => this.props.onPress(this.props.index)}>
-                    <Text style={{fontSize: 50, fontWeight: "bold"}}>{this.props.number}&nbsp;</Text>
+                    <Text style={{color: this.props.color[this.props.index], fontSize: 50, fontWeight: "bold"}}>{this.props.number}&nbsp;</Text>
                 </TouchableOpacity>
             </View>
         )

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { ImageBackground, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 // import Constants from 'expo-constants';
 import Square from "./Square";
 // You can import from local files
@@ -16,7 +16,8 @@ class Board extends React.Component {
             squares: Array(9).fill(null),
             gameWon: false,
             winner: null,
-            numClicked: 0
+            numClicked: 0,
+            color: Array(9).fill(null)
         }
     }
 
@@ -65,10 +66,13 @@ class Board extends React.Component {
     handleClick = (index) => {
         if(this.state.squares[index] === null && !this.state.gameWon) {
             let sq = this.state.squares;
+            let col = this.state.color;
             sq[index] = this.state.xTurn ? "X" : "O";
+            col[index] = this.state.xTurn ? "red" : "blue"
             this.setState({
                 numClicked: this.state.numClicked+1,
                 squares: sq,
+                color: col,
                 xTurn: !this.state.xTurn,
             })
             this.checkWinner();
@@ -91,19 +95,19 @@ class Board extends React.Component {
                     <Text style={{paddingBottom: 20, paddingTop: 80, paddingLeft: 75, fontSize: 96}}>X Turn</Text>
                 ) : <Text style={{paddingBottom: 20, paddingTop: 80, paddingLeft: 75, fontSize: 96}}>O Turn</Text>}
                 <View style={styles.row}>
-                    <Square onPress={this.handleClick} index={0} number={this.state.squares[0]} />
-                    <Square onPress={this.handleClick} index={1} number={this.state.squares[1]} />
-                    <Square onPress={this.handleClick} index={2} number={this.state.squares[2]} />
+                    <Square onPress={this.handleClick} index={0} color={this.state.color} number={this.state.squares[0]} />
+                    <Square onPress={this.handleClick} index={1} color={this.state.color} number={this.state.squares[1]} />
+                    <Square onPress={this.handleClick} index={2} color={this.state.color} number={this.state.squares[2]} />
                 </View>
                 <View style={styles.row1}>
-                    <Square onPress={this.handleClick} index={3} number={this.state.squares[3]} />
-                    <Square onPress={this.handleClick} index={4} number={this.state.squares[4]} />
-                    <Square onPress={this.handleClick} index={5} number={this.state.squares[5]} />
+                    <Square onPress={this.handleClick} index={3} color={this.state.color} number={this.state.squares[3]} />
+                    <Square onPress={this.handleClick} index={4} color={this.state.color} number={this.state.squares[4]} />
+                    <Square onPress={this.handleClick} index={5} color={this.state.color} number={this.state.squares[5]} />
                 </View>
                 <View style={styles.row2}>
-                    <Square onPress={this.handleClick} index={6} number={this.state.squares[6]} />
-                    <Square onPress={this.handleClick} index={7} number={this.state.squares[7]} />
-                    <Square onPress={this.handleClick} index={8} number={this.state.squares[8]} />
+                    <Square onPress={this.handleClick} index={6} color={this.state.color} number={this.state.squares[6]} />
+                    <Square onPress={this.handleClick} index={7} color={this.state.color} number={this.state.squares[7]} />
+                    <Square onPress={this.handleClick} index={8} color={this.state.color} number={this.state.squares[8]} />
                 </View>
                 {this.state.gameWon ? (
                     <View style={styles.win}>
@@ -123,7 +127,6 @@ class Board extends React.Component {
                     </View>
                 ) : <View></View>
                 }
-
             </View>
         );
     }
@@ -155,7 +158,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: "row",
         position: "absolute",
-        backgroundColor: "azure",
+    //    backgroundColor: "azure",
         top: 303,
         left: 85
     },
@@ -163,7 +166,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: "row",
         position: "absolute",
-        backgroundColor: "azure",
+   //     backgroundColor: "azure",
         top: 382,
         left: 85
     },
