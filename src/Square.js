@@ -7,7 +7,7 @@ class Square extends React.Component {
         return (
             <View>
                 <TouchableOpacity activeOpacity={1} style={styles.button} onPress={() => this.props.onPress(this.props.index)}>
-                    <Text style={{color: this.props.color[this.props.index], fontSize: 50, fontWeight: "bold"}}>{this.props.number}&nbsp;</Text>
+                    <Text style={{color: this.props.color[this.props.index], fontSize: 56, fontWeight: "bold"}}>{this.props.number}&nbsp;</Text>
                 </TouchableOpacity>
             </View>
         )
@@ -19,8 +19,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#DDDDDD',
         borderWidth: 3,
-        padding: 10,
-        fontSize: 20,
+        paddingLeft: 12,
+        paddingTop: 4,
+        fontSize: 36,
         fontWeight: "bold",
         height: 80,
         width: 80
